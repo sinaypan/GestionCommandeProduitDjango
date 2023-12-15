@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Link to Bootstrap CSS from Django's static files -->
+
+    <title>Your Title</title>
+</head>
+<body>
+    <div class="container mt-5">
+    <h4 class="text-center">Formulaire pour passer des commandes:</h4>
+    <div class="d-flex justify-content-center"> <!-- Center the form -->
+        <form method="POST" class="w-50"> <!-- Adjust the width of the form -->
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Valider</button>
+        </form>
+    </div>
+    <p class="text-center mt-3">{{ message }}</p>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Bootstrap JS and dependencies from Django's static files -->
+</body>
+</html>

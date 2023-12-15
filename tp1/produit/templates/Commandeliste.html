@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Include Bootstrap CSS using Django's static template tag -->
+
+    <style>
+        /* Your custom CSS styles can be added here */
+    </style>
+
+    <title>Your Title</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>La liste des Commandes disponibles :</h1>
+        <ul class="list-group">
+            {% for Commande in Commandes %}
+                <li class="list-group-item">
+                    {{ Commande.Description_cmd }}
+                    <ul>
+                        <li>{{ Commande.Date_cmd }}</li>
+                        <li>{{ Commande.Produit_cmd.Prd_Name }}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <form action="" method="GET">
+            <button type="submit" name="ajouter" class="btn btn-primary mt-3">Ajouter Commande</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Include Bootstrap JS using Django's static template tag -->
+</body>
+</html>

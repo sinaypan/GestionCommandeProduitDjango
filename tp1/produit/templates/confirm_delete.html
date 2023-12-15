@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de suppression</title>
+</head>
+<body>
+    <h3>Confirmez-vous la suppression de la commande "{{ cmd.Description_cmd }}" ?</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Confirmer la suppression">
+    </form>
+    <a href="{% url 'CmdList' %}">Annuler</a>
+</body>
+</html>

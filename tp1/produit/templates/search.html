@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Include Bootstrap CSS using Django's static template tag -->
+
+    <style>
+        /* Your custom CSS styles can be added here */
+    </style>
+
+    <title>Product Search</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <form action="" method="GET" class="mb-4">
+            <div class="form-group">
+                <label for="search">Entrez le nom du produit</label>
+                <input type="text" name="search" id="search" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">démarrer la recherche</button>
+        </form>
+
+        <h4>resultat de recherche :</h4>
+        <ul class="list-group">
+            {% if once %}
+                {% if not found %}
+                    {% if produits %}
+                        <h5 style="color: red;">Recherche niveau 1 – Aucun produit n'a été trouvé ! </h5>
+                        <h5 style="color: red;">Recherche niveau 2 :</h5>
+                        {% for produit in produits %}
+                            <li class="list-group-item">
+                                Nom du produit: {{ produit.Prd_Name }},
+                                son prix: {{ produit.Price }} Da.
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <h5 style="color: red;">Essayer à nouveau</h5>
+                    {% endif %}
+                {% endif %}
+                {% if found %}
+                    {% for produit in produits %}
+                        <li class="list-group-item">
+                            Nom du produit: {{ produit.Prd_Name }},
+                            son prix: {{ produit.Price }} Da.
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </ul>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Include Bootstrap JS using Django's static template tag -->
+</body>
+</html>
